@@ -14,7 +14,7 @@ xhr.onload = () => {
     let description = obj.details.description
 
     let iurl = obj.details.thumbnail.domain
-    let imagePath = obj.details.thumbnail.basePath + '/' + obj.details.thumbnail.key;
+    let imagePath = obj.details.thumbnail.basePath + '/' + obj.details.thumbnail.qualities[0] + '/' + obj.details.thumbnail.key;
     let imageUrl = iurl + '/' + imagePath;
 
     console.log(imageUrl);
@@ -115,6 +115,7 @@ xhr.onload = () => {
         subtitle.innerHTML = vcst
         cc.innerHTML = coursesCount + " video series"
         img.src = imageUrl
+        img.className = "images"
 
         let innerdiv = document.createElement("div")
         innerdiv.className = "other-course-box"
