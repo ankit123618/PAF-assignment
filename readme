@@ -4,7 +4,11 @@ for windows: you can install wamp or xampp
 for linux: you can install lampp or xampp
 visit official websites for instructions
 
-<!-- remaining tasks -->
+# remaining tasks
 code optimisation
-images fetching
 responsiveness
+
+# suggesions
+please check your api - image section
+url is not found, i manage it but it needs to be corrected in server 
+

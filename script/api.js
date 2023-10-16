@@ -32,65 +32,43 @@ xhr.onload = () => {
 
     document.getElementById("total").innerHTML = "(" + obj.courses.length + ")"
 
-    
+
     for (let index = 0; index < obj.courses.length; index++) {
-        
+
         let element = obj.courses[index];
         let no = document.createElement("p")
         no.className = "video-series-no"
-        no.innerHTML = "भाग " + (index+1)
-        // document.getElementById("video-series").appendChild(no)
-       
+        no.innerHTML = "भाग " + (index + 1)
+
         let vct = element.title
         let vcst = element.subtitle
         let vctime = element.courseHours
         let vcamt = element.amount
         let vcoriginalAmount = element.originalAmount
         let vclanguage = element.language
-        let vcimage = element.thumbnail
 
-        console.log(vct);
-        console.log(vcst);
-        console.log(vctime);
-        console.log(vcamt);
-        console.log(vcoriginalAmount);
-        console.log(vclanguage);
-        console.log(vcimage);
-        
         // Calculate hours and minutes
         let totalMinutes = vctime * 60;
         let hours = Math.floor(totalMinutes / 60);
         let minutes = parseInt(totalMinutes % 60);
-        
+
         // Create a formatted string
         let formattedTime = `${hours} hours and ${minutes} minutes`;
-        console.log(formattedTime);
-        
+
         let title = document.createElement("p")
         title.style.fontWeight = "bold"
         let subtitle = document.createElement("p")
         subtitle.style.fontWeight = "bold"
         let time = document.createElement("p")
         let contribution = document.createElement("p")
-        // let amount = document.createElement("p")
-        // let originalAmount = document.createElement("p")
         let language = document.createElement("p")
         language.className = "video-series-lang"
-        let picture = document.createElement("img")
 
         title.innerHTML = vct
         subtitle.innerHTML = vcst
         time.innerHTML = formattedTime
-        contribution.innerHTML = "contribution: "+ vcamt+"₹"+` <del>${vcoriginalAmount}</del>`
-        // amount.innerHTML = vcamt
-        // originalAmount.innerHTML = vcoriginalAmount
+        contribution.innerHTML = "contribution: " + vcamt + "₹" + ` <del>${vcoriginalAmount}</del>`
         language.innerHTML = vclanguage
-        picture.innerHTML = vcimage
-
-       
-
-
-
 
         let innerdiv = document.createElement("div")
         innerdiv.className = "course-box"
@@ -100,15 +78,12 @@ xhr.onload = () => {
         innerdiv.appendChild(subtitle)
         innerdiv.appendChild(time)
         innerdiv.appendChild(contribution)
-        // innerdiv.appendChild(amount)
-        // innerdiv.appendChild(originalAmount)
         innerdiv.appendChild(language)
-        innerdiv.appendChild(picture)
 
         videosection.appendChild(innerdiv)
     }
 
-    
+
 
     for (let index = 0; index < obj.relatedContent.length; index++) {
         let element = obj.relatedContent[index];
@@ -118,9 +93,6 @@ xhr.onload = () => {
         let coursesCount = element.coursesCount
         let thumbnail = element.thumbnail
 
-        console.log(vct);
-        console.log(vcst);
-        console.log(coursesCount);
         console.log(thumbnail);
 
         let title = document.createElement("p")
@@ -130,10 +102,19 @@ xhr.onload = () => {
         let cc = document.createElement("p")
         let img = document.createElement("img")
 
+        let iurl = element.thumbnail.domain
+        let imagePath = element.thumbnail.basePath + '/' + element.thumbnail.qualities[0] + '/' + element.thumbnail.key;
+        let imageUrl = iurl + '/' + imagePath;
+        
+    
+        console.log(imageUrl);
+    
+
 
         title.innerHTML = vct
         subtitle.innerHTML = vcst
-        cc.innerHTML = coursesCount+" video series"
+        cc.innerHTML = coursesCount + " video series"
+        img.src = imageUrl
 
         let innerdiv = document.createElement("div")
         innerdiv.className = "other-course-box"
@@ -162,7 +143,8 @@ xhr2.onload = () => {
 
     for (let index = 0; index < obj.length; index++) {
         let element = obj[index];
-        // creating accordion dynamicially
+
+        // creating accordion 
         let accordion = document.createElement("div")
         accordion.className = "accordion"
         accordion.id = "accordionExample" + index
