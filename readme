@@ -1,0 +1,10 @@
+on your machine visit https://localhost from your browser to run this website
+for this you have to install server on your machine
+for windows: you can install wamp or xampp
+for linux: you can install lampp or xampp
+visit official websites for instructions
+
+<!-- remaining tasks -->
+code optimisation
+images fetching
+responsiveness
